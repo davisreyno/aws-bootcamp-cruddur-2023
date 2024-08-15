@@ -1,0 +1,13 @@
+Create SNS topic
+
+aws sns create-topic --name billing-alarm
+
+aws sns subscribe \
+    --topic-arn="arn:aws:sns:us-east-2:590183676698:billing-alarm" \
+    --protocol=email \
+    --notification-endpoint davisreynocs@gmail.com
+
+
+Create alarm:
+
+aws cloudwatch put-metric-alarm --cli-input-json file://aws/json/alarm_config.json
